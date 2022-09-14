@@ -5,10 +5,10 @@
             <p>You are current Previewing this city, click the "+" icon to start tracking this city.</p>
         </div>
         <!-- weather overview -->
-         <div class="flex flex-col items-center text-white py-12">
+         <div class="flex flex-col items-center text-white py-10">
             <h1 class="text-4xl mb-2">{{route.params.city}}</h1>
 
-             <p v-if="weatherData.hourly[0].currentTime"  class="text-sm mb-12"> 
+             <p v-if="weatherData.hourly[0].currentTime"  class="text-sm mb-8"> 
                 {{
                   // new Date()
                new Date(weatherData.hourly[0].currentTime).toLocaleDateString(
@@ -31,7 +31,7 @@
             </p> 
           
                 <!-- temp -->
-            <p class="text-6xl mb-8">
+            <p class="text-8xl mb-6">
                 {{Math.round(weatherData.current.temp)}}&deg;
             </p>
 
@@ -40,7 +40,7 @@
                     {{weatherData.current.weather[0].description}}
                 </p>
 
-                <img class="w-[150px] h-auto" :src="`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`" alt="">
+                <img class="w-[150px] h-auto " :src="`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`" alt="">
          </div>
 
          <hr class="border-white  border border-opacity-10 w-full"/>
@@ -51,7 +51,7 @@
             <div class="mx-8 text-white"> 
                 <h2 class="mb-4">Hourly Weather</h2>
 
-                <div class="flex gap-10 overflow-x-scroll ">
+                <div class="flex gap-10 overflow-x-scroll  ">
                     <div v-for="hourData in weatherData.hourly" v-bind:key="hourData.dt" class="flex flex-col gap-4 items-center">
                         <!-- {{hourData}} -->
 
@@ -71,8 +71,6 @@
                             
                     </div>
                 </div>
-
-
 
             </div>
          </div>
@@ -99,8 +97,8 @@
                         <img class="w-[50px] h-[50px] object-cover" :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`" alt="img">
 
                         <div class="flex gap-2 flex-1 justify-end">
-                            <p>H:{{Math.round(day.temp.max)}}</p>
-                            <p>L:{{Math.round(day.temp.min)}}</p>
+                            <p>H: {{ Math.round(day.temp.max) }}</p>
+                            <p>L: {{ Math.round(day.temp.min) }}</p>
                         </div>
 
                 </div>

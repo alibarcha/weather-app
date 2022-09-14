@@ -3,7 +3,7 @@
 
         <div v-show="modalActive" class="absolute   w-full bg-black bg-opacity-30 h-screen top-0 left-0 flex      justify-center px-8">
             <transition name="modal-inner">
-                <div v-if="modalActive" class="py-4 px-6  bg-white self-start mt-28 max-w-screen-md">
+                <div v-if="modalActive" class="py-4 px-6  bg-white self-start mt-40 max-w-screen-md">
                 <!-- 0 reference -->
                 <slot></slot>
                 <button @click="$emit('close-modal')" class="text-white mt-6 bg-weather-primary py-2 px-6">Close</button>
