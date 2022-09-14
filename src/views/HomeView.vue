@@ -19,12 +19,22 @@
             </ul>
 
       </div>
+
+      <!-- cities list -->
+    <Suspense>
+        <CityList/>
+        <template #fallback>
+          <p>Loading...</p>
+        </template>
+      </Suspense>
+
+
    </main>
 
 </template>
 
 <script setup>
-
+   import CityList from '../components/CityList.vue'
   import { ref } from 'vue'
  
 import axios from 'axios'
@@ -49,7 +59,7 @@ const previewCity=(searchResult)=>{
       params:{state:state.replace(" ",""),city:city},
       query:{
          lat:searchResult.geometry.coordinates[1],
-         lag:searchResult.geometry.coordinates[0],
+         lng:searchResult.geometry.coordinates[0],
          preview:true
       }
    })

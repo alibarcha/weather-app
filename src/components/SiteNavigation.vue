@@ -67,6 +67,7 @@
     const savedCities=ref([]);
     const route=useRoute();
     const router=useRouter()
+
     const addCity=()=>{
         if(localStorage.getItem('savedCities')){
             savedCities.value=JSON.parse(
@@ -82,6 +83,7 @@
                 lat:route.query.lat,
                 lng:route.query.lng,
             },
+
         };
         savedCities.value.push(locationObj);
         localStorage.setItem(
