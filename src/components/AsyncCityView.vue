@@ -51,7 +51,7 @@
             <div class="mx-8 text-white"> 
                 <h2 class="mb-4">Hourly Weather</h2>
 
-                <div class="flex gap-10 overflow-x-scroll  ">
+                <div class="flex gap-10  scroll-box  ">
                     <div v-for="hourData in weatherData.hourly" v-bind:key="hourData.dt" class="flex flex-col gap-4 items-center">
                         <!-- {{hourData}} -->
 
@@ -105,13 +105,20 @@
             </div>
            </div>
 
+           <!-- romove city -->
+
+           <div @click="removeCity" class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500">
+            <i class="fa-solid fa-trash"></i>
+            <p>Remove city</p>
+           </div>
+
 
     </div>
 </template>
 
 <script setup>
 import axios from 'axios'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const route=useRoute();
 
 const getWeatherData=async()=>{
@@ -151,8 +158,57 @@ const weatherData=await getWeatherData();
 console.log("weather data",weatherData)
 // console.log("houl",weatherData.hourly[0].currentTime)
 
+
+// ----Remove city ----------
+const router=useRouter();
+const removeCity=()=>{
+    const cities=JSON.parse(localStorage.getItem("savedCities"));
+    const updatedCities=cities.filter(
+        (city)=>city.id !==route.query.id
+    );
+    localStorage.setItem("savedCities",
+    JSON.stringify(updatedCities)
+    );
+    router.push({
+        name:"home",
+    })
+    
+}
+
 </script>
 
 <style scoped>
+
+.scroll-box {
+    overflow-x:scroll;  
+    padding-bottom: 25px;
+    padding-top: 10px;
+}
+
+
+/* Track */
+.scroll-box::-webkit-scrollbar-track {
+    
+  border-radius: 10px;
+  background: #00668A;
+  /* border: 1px solid #004E71; */
+}
+
+/* height & width */
+.scroll-box::-webkit-scrollbar {
+   height: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb{
+  background:  #004E71; 
+  border: 1px solid  #004E71;
+    padding: 20px;
+  border-radius: 10px;
+  
+}
+::-webkit-scrollbar-thumb:hover {
+    background: orangered;
+    border: none;
+}
 
 </style>

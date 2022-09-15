@@ -1,7 +1,7 @@
 <template>
 
     <div v-for="city in savedCities" :key="city.id">
-       <CityCard v-bind:city="city" @click="goToCityView(city)" />
+       <CityCard v-bind:city="city" @click="goToCityView(city)" class="cursor-pointer"/>
 
     </div>
 
@@ -14,6 +14,7 @@
 <script setup>
 import axios from 'axios'
 import { useRouter } from "vue-router";
+
 import CityCard from '../components/CityCard.vue'
 import { ref } from 'vue'
  
@@ -43,10 +44,12 @@ await getCities();
 
 const router = useRouter();
 const goToCityView = (city) => {
+ 
   router.push({
-    name: "cityView",
+    name: "cityview",
     params: { state: city.state, city: city.city },
     query: {
+        id:city.id,
       lat: city.coords.lat,
       lng: city.coords.lng,
     },
