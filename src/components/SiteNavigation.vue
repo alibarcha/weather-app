@@ -14,7 +14,7 @@
       <router-link :to="{ name: 'home' }">
         <div class="flex items-center gap-3 flex-1">
           <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">The Local Wether Barcha</p>
+          <p class="text-2xl">The Local Wether </p>
         </div>
       </router-link>
 
