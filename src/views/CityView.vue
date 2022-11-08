@@ -15,5 +15,4 @@ import AsyncCityView from "../components/AsyncCityView.vue";
 
 
 <style scoped>
-
 </style>

@@ -1,31 +1,20 @@
 <template>
+  <div class="flex flex-col min-h-screen font-Roboto bg-weather-primary">
+    <SiteNavigation />
 
-     <div class="flex flex-col min-h-screen font-Roboto  bg-weather-primary">
-
-        <SiteNavigation/>
-       
-
-      <router-view/>
-     </div>
-
+    <router-view />
+  </div>
 </template>
 
 <script>
-import SiteNavigation from './components/SiteNavigation.vue'
+import SiteNavigation from "./components/SiteNavigation.vue";
 
-
-export default{
-
-  components:{
+export default {
+  components: {
     SiteNavigation,
- 
-  }
-
-}
+  },
+};
 </script>
 
 <style>
-
-
-
 </style>
