@@ -8,29 +8,11 @@
         @input="getSearchResults"
         type="text"
         placeholder="Search for a city or state"
-        class="
-          py-2
-          px-1
-          w-full
-          bg-transparent
-          border-b
-          focus:border-weather-secondary
-          focus:outline-none
-          focus:shadow-[0px-1px-0-0-#004E71]
-        "
+        class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px-1px-0-0-#004E71]"
       />
 
       <ul
-        class="
-          absolute
-          bg-weather-secondary
-          text-white
-          w-full
-          shadow-md
-          py-2
-          px-1
-          top-[66px]
-        "
+        class="absolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]"
         v-if="mapboxSearchResults"
       >
         <!-- error -->

@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CityView from '../views/CityView'
 
-
 const routes = [
   {
     path: '/',
@@ -19,8 +18,6 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  
- 
   routes
 })
 

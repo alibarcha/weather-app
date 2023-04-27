@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky bg-wether-primary shadow-lg top-0">
+  <header class="sticky z-20 shadow-lg top-0">
     <nav
       class="
         container
@@ -141,4 +141,7 @@ const addCity = () => {
 
 
 <style scoped>
+header{
+  background: #00668a !important;
+}
 </style>

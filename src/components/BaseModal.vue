@@ -2,24 +2,33 @@
   <transition name="modal-outer">
     <div
       v-show="modalActive"
+      @click="modalActive=false"
       class="
         absolute
         w-full
-        bg-black bg-opacity-30
+        overflow-y-auto
+        bg-black bg-opacity-50
         h-screen
         top-0
         left-0
+        bottom-0
+        right-0
         flex
         justify-center
-        px-8
+        items-center
+        sm-px-8
+        px-4
+        sm-py-10
+        py-4
       "
     >
       <transition name="modal-inner">
         <div
+        @click.stop
           v-if="modalActive"
-          class="py-4 px-6 bg-white self-start mt-40 max-w-screen-md"
+          class="bg-white sm-px-6 px-8 sm-py-4 py-6 h-auto rounded"
+          style="width:600px;"
         >
-          <!-- 0 reference -->
           <slot></slot>
           <button
             @click="$emit('close-modal')"

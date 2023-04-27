@@ -127,16 +127,7 @@
 
     <div
       @click="removeCity"
-      class="
-        flex
-        items-center
-        gap-2
-        py-12
-        text-white
-        cursor-pointer
-        duration-150
-        hover:text-red-500
-      "
+      class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500"
     >
       <i class="fa-solid fa-trash"></i>
       <p>Remove city</p>
@@ -202,12 +193,11 @@ const removeCity = () => {
 .scroll-box::-webkit-scrollbar-track {
   border-radius: 10px;
   background: #00668a;
-  /* border: 1px solid #004E71; */
 }
 
 /* height & width */
 .scroll-box::-webkit-scrollbar {
-  height: 5px;
+  height: 8px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb {
@@ -217,7 +207,6 @@ const removeCity = () => {
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: orangered;
-  border: none;
+  background: #012a3f;
 }
 </style>
