@@ -3,7 +3,7 @@
     <Suspense>
       <AsyncCityView />
       <template #fallback>
-        <p>Loading...</p>
+        <p class="text-white py-4 text-center text-2xl">Loading...</p>
       </template>
     </Suspense>
   </div>

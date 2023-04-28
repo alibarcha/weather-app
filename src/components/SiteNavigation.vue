@@ -1,56 +1,36 @@
 <template>
   <header class="sticky z-20 shadow-lg top-0">
     <nav
-      class="
-        container
-        flex flex-col
-        sm:flex-row
-        items-center
-        gap-4
-        text-white
-        py-6
-      "
+      class="container flex flex-col sm:flex-row items-center gap-4 text-white py-4"
     >
       <router-link :to="{ name: 'home' }">
         <div class="flex items-center gap-3 flex-1">
-          <i class="fa-solid fa-sun text-2xl"></i>
-          <p class="text-2xl">The Local Wether </p>
+          <i class="fa-solid fa-sun text-xl"></i>
+          <p class="text-2xl">The Local Wether</p>
         </div>
       </router-link>
 
       <div class="flex gap-3 flex-1 justify-end">
         <i
           v-on:click="toggleModal"
-          class="
-            fa-solid fa-circle-info
-            text-xl
-            hover:text-weather-secondary
-            duration-150
-            cursor-pointer
-          "
+          class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
         ></i>
         <i
           @click="addCity"
           v-if="route.query.preview"
-          class="
-            fa-solid fa-plus
-            text-xl
-            hover:text-weather-secondary
-            duration-150
-            cursor-pointer
-          "
+          class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"
         ></i>
       </div>
 
       <BaseModal v-bind:modalActive="modalActive" @close-modal="toggleModal">
         <div class="text-black">
           <h1 class="text-xl mb-1">About:</h1>
-          <p class="mb-4">
+          <p class="mb-2">
             The Local wether allows to track the current and future wether of
             cities of your choisen.
           </p>
           <h2 class="text-xl">How it Works:</h2>
-          <ol class="list-decimal list-inside mb-4">
+          <ol class="list-decimal list-inside mb-2">
             <li>
               Search for your city by entering the name into the search bar.
             </li>
@@ -80,7 +60,7 @@ import { ref } from "vue";
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import BaseModal from "./BaseModal.vue";
 import { uid } from "uid";
-
+ 
 const modalActive = ref(null);
 const toggleModal = () => {
   modalActive.value = !modalActive.value;
@@ -115,31 +95,7 @@ const addCity = () => {
   router.replace({ query });
 };
 
-// import BaseModal from './BaseModal.vue'
-// import {ref} from 'vue'
-// export default {
-
-//     components:{
-//         BaseModal
-//     },
-
-//     setup(){
-//         const modalActive=ref(null);
-
-//         const toggleModal=()=>{
-//             modalActive.value=!modalActive.value
-//         }
-
-//        return {
-//         modalActive,toggleModal
-//        }
-//     }
-
-// }
 </script>
-
-
-
 <style scoped>
 header{
   background: #00668a !important;

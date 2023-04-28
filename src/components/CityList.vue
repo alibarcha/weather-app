@@ -6,7 +6,6 @@
       class="cursor-pointer"
     />
   </div>
-
   <p v-if="savedCities.length === 0">
     No location . To start tracking a location, search in the field above.
   </p>
@@ -15,7 +14,6 @@
 <script setup>
 import axios from "axios";
 import { useRouter } from "vue-router";
-
 import CityCard from "../components/CityCard.vue";
 import { ref } from "vue";
 
@@ -23,7 +21,6 @@ const savedCities = ref([]);
 const getCities = async () => {
   if (localStorage.getItem("savedCities")) {
     savedCities.value = JSON.parse(localStorage.getItem("savedCities"));
-
     const requests = [];
     savedCities.value.forEach((city) => {
       requests.push(
@@ -40,9 +37,7 @@ const getCities = async () => {
   }
 };
 await getCities();
-
 // goToCityView
-
 const router = useRouter();
 const goToCityView = (city) => {
   router.push({
@@ -56,7 +51,3 @@ const goToCityView = (city) => {
   });
 };
 </script>
-
-
-<style scoped>
-</style>

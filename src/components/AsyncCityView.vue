@@ -3,7 +3,7 @@
     <!-- Banner -->
     <div
       v-if="route.query.preview"
-      class="text-white p-4 bg-weather-secondary w-full text-center"
+      class="text-white p-3 bg-weather-secondary w-full text-center drop-shadow-md"
     >
       <p>
         You are current Previewing this city, click the "+" icon to start
@@ -11,10 +11,9 @@
       </p>
     </div>
     <!-- weather overview -->
-    <div class="flex flex-col items-center text-white py-10">
+    <div class="flex flex-col items-center text-white pt-4">
       <h1 class="text-4xl mb-2">{{ route.params.city }}</h1>
-
-      <p v-if="weatherData.hourly[0].currentTime" class="text-sm mb-8">
+      <p v-if="weatherData.hourly[0].currentTime" class="text-sm mb-3">
         {{
           // new Date()
           new Date(weatherData.hourly[0].currentTime).toLocaleDateString(
@@ -37,38 +36,38 @@
       </p>
 
       <!-- temp -->
-      <p class="text-8xl mb-6">
+      <p class="text-8xl mb-3">
         {{ Math.round(weatherData.current.temp) }}&deg;
       </p>
-
       <p>Feels like {{ Math.round(weatherData.current.feels_like) }}&deg;</p>
-      <p class="capitalize">
+      <p class="capitalize pb-0">
         {{ weatherData.current.weather[0].description }}
       </p>
 
       <img
-        class="w-[150px] h-auto"
+        class="w-[105px] h-auto"
         :src="`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
         alt=""
       />
     </div>
-
     <hr class="border-white border border-opacity-10 w-full" />
 
     <!-- Hourly weather -->
 
-    <div class="max-w-screen-md w-full py-12">
+    <div class="max-w-screen-md w-full pt-4 pb-4">
       <div class="mx-8 text-white">
-        <h2 class="mb-4">Hourly Weather</h2>
+        <h2>Hourly Weather</h2>
 
-        <div class="flex gap-10 scroll-box">
+        <div
+          class="flex gap-8 scroll-box"
+          style="padding-bottom: 8px !important"
+        >
           <div
             v-for="hourData in weatherData.hourly"
             v-bind:key="hourData.dt"
-            class="flex flex-col gap-4 items-center"
+            class="flex flex-col gap-1 items-center"
           >
             <!-- {{hourData}} -->
-
             <p class="whitespace-nowrap text-md">
               {{
                 new Date(hourData.currentTime).toLocaleTimeString("en-us", {
@@ -78,12 +77,12 @@
             </p>
             <!-- img -->
             <img
-              class="w-auto h-[50px] object-cover"
+              class="w-auto h-[45px] object-cover"
               :src="`https://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
               alt=""
             />
             <!-- temp -->
-            <p class="text-xl">{{ Math.round(hourData.temp) }}&deg;</p>
+            <p class="text-md">{{ Math.round(hourData.temp) }}&deg;</p>
           </div>
         </div>
       </div>
@@ -93,7 +92,7 @@
 
     <!-- Weekly wetther -->
 
-    <div class="max-w-screen-md w-full py-12">
+    <div class="max-w-screen-md w-full pt-4 pb-4">
       <div class="mx-8 text-white">
         <h2>7 Day Forcast</h2>
         <div
@@ -110,7 +109,7 @@
           </p>
 
           <img
-            class="w-[50px] h-[50px] object-cover"
+            class="w-[65px] h-[50px] object-cover"
             :src="`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`"
             alt="img"
           />
@@ -124,10 +123,9 @@
     </div>
 
     <!-- romove city -->
-
     <div
       @click="removeCity"
-      class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500"
+      class="flex items-center gap-2 py-8 text-white cursor-pointer duration-150 hover:text-red-700"
     >
       <i class="fa-solid fa-trash"></i>
       <p>Remove city</p>
@@ -147,7 +145,6 @@ const getWeatherData = async () => {
     );
 
     // call currentr data and time
-
     const localOffset = new Date().getTimezoneOffset() * 60000;
     const utc = weatherData.data.dt * 1000 + localOffset;
     weatherData.data.currentTime =
@@ -167,8 +164,6 @@ const getWeatherData = async () => {
 };
 
 const weatherData = await getWeatherData();
-console.log("weather data", weatherData);
-// console.log("houl",weatherData.hourly[0].currentTime)
 
 // ----Remove city ----------
 const router = useRouter();
@@ -197,7 +192,7 @@ const removeCity = () => {
 
 /* height & width */
 .scroll-box::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb {
