@@ -37,15 +37,26 @@
 
       <!-- temp -->
       <p class="text-8xl mb-3">
-        {{ Math.round(weatherData.current.temp) }}&deg;
+        {{
+          Math.round(((Math.round(weatherData.current.temp) - 32) * 5) / 9)
+        }}&deg;<sup class="text-6xl">C</sup>
       </p>
-      <p>Feels like {{ Math.round(weatherData.current.feels_like) }}&deg;</p>
+
+      <p>
+        Feels like &nbsp;
+        {{
+          Math.round(
+            ((Math.round(weatherData.current.feels_like) - 32) * 5) / 9
+          )
+        }}&deg;<sup>C</sup>
+      </p>
+
       <p class="capitalize pb-0">
         {{ weatherData.current.weather[0].description }}
       </p>
 
       <img
-        class="w-[105px] h-auto"
+        class="w-[100px] h-auto"
         :src="`https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png`"
         alt=""
       />
@@ -81,8 +92,12 @@
               :src="`https://openweathermap.org/img/wn/${hourData.weather[0].icon}@2x.png`"
               alt=""
             />
-            <!-- temp -->
-            <p class="text-md">{{ Math.round(hourData.temp) }}&deg;</p>
+            <!-- hour temperature -->
+            <p class="text-md">
+              {{
+                Math.round(((Math.round(hourData.temp) - 32) * 5) / 9)
+              }}&deg;<sup>C</sup>
+            </p>
           </div>
         </div>
       </div>
@@ -114,9 +129,20 @@
             alt="img"
           />
 
-          <div class="flex gap-2 flex-1 justify-end">
-            <p>H: {{ Math.round(day.temp.max) }}</p>
-            <p>L: {{ Math.round(day.temp.min) }}</p>
+          <div class="flex gap-6 flex-1 justify-end">
+            <p>
+              Max T... &nbsp;
+              {{
+                Math.round(((Math.round(day.temp.max) - 32) * 5) / 9)
+              }}&deg;<sup>C</sup>
+            </p>
+            |
+            <p>
+              Min T... &nbsp;
+              {{
+                Math.round(((Math.round(day.temp.min) - 32) * 5) / 9)
+              }}&deg;<sup>C</sup>
+            </p>
           </div>
         </div>
       </div>
@@ -143,7 +169,7 @@ const getWeatherData = async () => {
     const weatherData = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${route.query.lat}&lon=${route.query.lng}&exclude={part}&appid=7efa332cf48aeb9d2d391a51027f1a71&units=imperial`
     );
-
+    console.log(weatherData);
     // call currentr data and time
     const localOffset = new Date().getTimezoneOffset() * 60000;
     const utc = weatherData.data.dt * 1000 + localOffset;
